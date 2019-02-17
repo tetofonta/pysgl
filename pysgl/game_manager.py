@@ -16,7 +16,12 @@ PYGAME_MODULES_UNLOAD = {
 
 class GameManager(object):
 
+    _internal_state = {
+
+    }
+
     def __init__(self):
+        self.__dict__ = self._internal_state
         self.pygameModules = []
         pygame.init()
         self.globals = Globals()
@@ -33,6 +38,8 @@ class GameManager(object):
         PYGAME_MODULES_LOAD[module]()
 
     def addGameState(self, gameStateClass):
+        # if len(self.gameStateManager.states) == 0:
+        #    self.gameStateManager.set_current(gameStateClass.__name__)
         self.gameStateManager.add(gameStateClass(self.screen))
 
     def SetCurrentGameState(self, gameState):
@@ -46,6 +53,7 @@ class GameManager(object):
     def run(self):
         do_loop = True
         while do_loop:
+            print(self.currentGameState)
             gameState = self.currentGameState
             dt = self.globals.clock.tick(self.globals.FPS)
             self.globals.playtime += dt / 1000.0
