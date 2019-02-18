@@ -30,6 +30,7 @@ class GameManager(object):
         self.globals.clock = pygame.time.Clock()
         self.gameStateManager = GameStateManager()
         self.SCREEN_SIZE = (800, 600)
+        self.caption = "test"
         self.screen = pygame.display.set_mode(self.SCREEN_SIZE)
         pygame.display.set_caption("DEMO 01")
 
