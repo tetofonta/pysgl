@@ -54,7 +54,7 @@ class GameManager(object):
     def run(self):
         do_loop = True
         while do_loop:
-            print(self.currentGameState)
+            # print(self.currentGameState)
             gameState = self.currentGameState
             dt = self.globals.clock.tick(self.globals.FPS)
             self.globals.playtime += dt / 1000.0
